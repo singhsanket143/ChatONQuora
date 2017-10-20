@@ -40,6 +40,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def chat
+    # byebug
+    @chats= Chat.all
+  end
   def indexmain
     respond_to do |format|
       format.html {

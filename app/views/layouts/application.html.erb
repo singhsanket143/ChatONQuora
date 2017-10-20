@@ -196,7 +196,8 @@ height: 20px;
             <a href="/users/<%= current_user.id %>">All Users</a>
           </li> -->
           <li>
-            <a href="#!">Chat Room</a>
+            <%=link_to "Chat Room", {controller: "home", action: "chat", chat_room_id: 1}%>
+
           </li>
           <li>
             <a href="#!">Rewards</a>

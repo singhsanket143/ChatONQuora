@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   get '/likenotification',to: 'notification#likeindex'
   get 'home/index'
+  get 'home/chat'
+  post 'chats/save_chat'
   get '/sear',to: 'questions#index'
   devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations",:omniauth_callbacks => "omniauth_callbacks" }
   root to: "home#indexmain"
