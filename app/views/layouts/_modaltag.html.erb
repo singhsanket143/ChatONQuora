@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+<span>
+      <button class="modal-action modal-close waves-effect waves-green transparent btn-flat right" style="display: inline-block;"><i class="material-icons">close</i></button>
+    </span>
+<div id="tag_cloud">
+    
+        <% tag_cloud Question.tag_counts, %w[sml med lar] do |tag, css_class| %>
+           
+   <div class="chip">
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+     <% @trend=Trend.where(name: tag.name).first %>
+            <% if @trend != nil %>
+
+            <% if @trend.follow_string(current_user.id,@trend.id)== true%>
+            <%= link_to(('<i class="material-icons tagicon">check</i>').html_safe, trend_follow_path(@trend), remote:true,method: :post,class: "follow1_#{@trend.id}") %>
+            <%else%>
+            <%= link_to(('<i class="material-icons tagicon">add</i>').html_safe, trend_follow_path(@trend), remote:true,method: :post,class: "follow1_#{@trend.id}") %>
+            <%end%>
+            <%end%>
+
+  </div>
+    
+  <% end %>
+    
+</div>
+  <% end %>
+    
